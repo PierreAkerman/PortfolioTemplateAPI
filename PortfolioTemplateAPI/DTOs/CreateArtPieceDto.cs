@@ -14,6 +14,7 @@ namespace PortfolioTemplateAPI.DTOs
         public DateTime Created { get; set; }
         public decimal? Price { get; set; }
         [Required(ErrorMessage = "This field is required, upload an image.")]
-        public string ImgUrl { get; set; }
+        public IFormFile ImgFile { get; set; }
+        public string? ImgUrl { get; set; }
     }
 }

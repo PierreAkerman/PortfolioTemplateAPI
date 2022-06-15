@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.1.32414.318
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PortfolioTemplateAPI", "PortfolioTemplateAPI\PortfolioTemplateAPI.csproj", "{C7C2AF38-E1E3-4937-9B96-0E5739D3C68D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PortfolioTemplateAPI", "PortfolioTemplateAPI\PortfolioTemplateAPI.csproj", "{C7C2AF38-E1E3-4937-9B96-0E5739D3C68D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

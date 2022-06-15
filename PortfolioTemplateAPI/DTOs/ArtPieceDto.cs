@@ -14,6 +14,6 @@ namespace PortfolioTemplateAPI.DTOs
         public DateTime Created { get; set; }
         public decimal? Price { get; set; }
         [Required]
-        public string ImgUrl { get; set; }
+        public string? ImgUrl { get; set; }
     }
 }
