@@ -4,8 +4,8 @@ using PortfolioTemplateAPI.DTOs;
 
 namespace PortfolioTemplateAPI.Controllers
 {
-    [ApiController]
     [Route("api/[controller]")]
+    [ApiController]
     public class ArtPieceController : ControllerBase
     {
         private readonly ApplicationDbContext _context;
@@ -59,7 +59,7 @@ namespace PortfolioTemplateAPI.Controllers
                 Description = newArtPiece.Description,
                 Created = newArtPiece.Created,
                 Price = newArtPiece.Price,
-                ImgUrl = newArtPiece.ImgUrl
+                ImgUrl = newArtPiece.ImageUrl
             };
             _context.Gallery.Add(artPiece);
             _context.SaveChanges();
@@ -70,7 +70,7 @@ namespace PortfolioTemplateAPI.Controllers
                 Description = artPiece.Description,
                 Created = artPiece.Created,
                 Price = artPiece.Price,
-                ImgUrl = artPiece.ImgUrl
+                ImageUrl = artPiece.ImgUrl
             };
             return CreatedAtAction(nameof(GetOne), new { id = artPiece.Id }, artPieceDto);
         }

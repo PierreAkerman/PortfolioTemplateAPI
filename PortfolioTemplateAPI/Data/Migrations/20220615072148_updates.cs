@@ -9,17 +9,17 @@ namespace PortfolioTemplateAPI.Data.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.RenameColumn(
-                name: "ImgFile",
+                name: "ImgUrl",
                 table: "Gallery",
-                newName: "ImgUrl");
+                newName: "ImageUrl");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.RenameColumn(
-                name: "ImgUrl",
+                name: "ImageUrl",
                 table: "Gallery",
-                newName: "ImgFile");
+                newName: "ImgUrl");
         }
     }
 }

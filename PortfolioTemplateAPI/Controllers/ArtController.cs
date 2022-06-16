@@ -28,6 +28,30 @@ namespace PortfolioTemplateAPI.Controllers
             }
             return fullFileName;
         }
+
+        //private IFormFile GetFile(string url)
+        //{
+
+        //}
+        //[HttpGet]
+        //public IActionResult Get(ArtPieceItemDto artPieceItem)
+        //{
+        //    var image = GetFile(artPieceItem.ImgUrl);
+        //    var artPiece = new ArtPieceItemDto
+        //    {
+        //        Id = artPieceItem.Id,
+        //        Title = artPieceItem.Title,
+        //        ImgUrl = artPieceItem.ImgUrl,
+        //    };
+        //    //return Ok(_context.Gallery.Select(e => new ArtPieceItemDto
+        //    //{
+        //    //    Id = e.Id,
+        //    //    Title = e.Title,
+        //    //    ImgUrl = e.ImgUrl
+
+        //    //}).ToList());
+        //}
+
         [HttpGet]
         public IActionResult GetOne(int id)
         {
@@ -53,7 +77,7 @@ namespace PortfolioTemplateAPI.Controllers
                 return BadRequest(ModelState);
             }
 
-            var url = SaveNewFile(newArtPiece.ImgFile);
+            var url = SaveNewFile(newArtPiece.ImgUrl);
             var artPiece = new ArtPiece
             {
                 Title = newArtPiece.Title,
@@ -71,7 +95,7 @@ namespace PortfolioTemplateAPI.Controllers
                 Description = artPiece.Description,
                 Created = artPiece.Created,
                 Price = artPiece.Price,
-                ImgUrl = artPiece.ImgUrl
+                ImageUrl = artPiece.ImgUrl
             };
             return CreatedAtAction(nameof(GetOne), new { id = artPiece.Id }, artPieceDto);
         }
