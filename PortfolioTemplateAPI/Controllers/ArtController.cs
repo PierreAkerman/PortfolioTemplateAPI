@@ -29,29 +29,6 @@ namespace PortfolioTemplateAPI.Controllers
             return fullFileName;
         }
 
-        //private IFormFile GetFile(string url)
-        //{
-
-        //}
-        //[HttpGet]
-        //public IActionResult Get(ArtPieceItemDto artPieceItem)
-        //{
-        //    var image = GetFile(artPieceItem.ImgUrl);
-        //    var artPiece = new ArtPieceItemDto
-        //    {
-        //        Id = artPieceItem.Id,
-        //        Title = artPieceItem.Title,
-        //        ImgUrl = artPieceItem.ImgUrl,
-        //    };
-        //    //return Ok(_context.Gallery.Select(e => new ArtPieceItemDto
-        //    //{
-        //    //    Id = e.Id,
-        //    //    Title = e.Title,
-        //    //    ImgUrl = e.ImgUrl
-
-        //    //}).ToList());
-        //}
-
         [HttpGet]
         public IActionResult GetOne(int id)
         {

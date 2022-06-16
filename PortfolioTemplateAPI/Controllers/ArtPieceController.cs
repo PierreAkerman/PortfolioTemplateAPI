@@ -1,9 +1,11 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Cors;
+using Microsoft.AspNetCore.Mvc;
 using PortfolioTemplateAPI.Data;
 using PortfolioTemplateAPI.DTOs;
 
 namespace PortfolioTemplateAPI.Controllers
 {
+    [EnableCors]
     [Route("api/[controller]")]
     [ApiController]
     public class ArtPieceController : ControllerBase
