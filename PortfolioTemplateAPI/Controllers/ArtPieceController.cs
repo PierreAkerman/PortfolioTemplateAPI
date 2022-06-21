@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Cors;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using PortfolioTemplateAPI.Data;
 using PortfolioTemplateAPI.DTOs;
@@ -10,10 +11,12 @@ namespace PortfolioTemplateAPI.Controllers
     [ApiController]
     public class ArtPieceController : ControllerBase
     {
+        private readonly IWebHostEnvironment _webHostEnvironment;
         private readonly ApplicationDbContext _context;
 
-        public ArtPieceController(ApplicationDbContext context)
+        public ArtPieceController(ApplicationDbContext context, IWebHostEnvironment webHostEnvironment)
         {
+            _webHostEnvironment = webHostEnvironment;
             _context = context;
         }
         [HttpGet]
@@ -23,9 +26,9 @@ namespace PortfolioTemplateAPI.Controllers
             {
                 Id = e.Id,
                 Title = e.Title,
-                ImgUrl = e.ImgUrl
+                ImgUrl = e.ImgUrl,
 
-            }).ToList());
+        }).ToList());
         }
 
         [HttpGet]
@@ -106,6 +109,9 @@ namespace PortfolioTemplateAPI.Controllers
             var artPiece = _context.Gallery.FirstOrDefault(e => e.Id == id);
             if (artPiece == null)
                 return NotFound();
+
+            var fileImage = Path.Combine(_webHostEnvironment.WebRootPath, "UploadedPics", artPiece.ImgUrl);
+            System.IO.File.Delete(fileImage);
 
             _context.Gallery.Remove(artPiece);
             _context.SaveChanges();
