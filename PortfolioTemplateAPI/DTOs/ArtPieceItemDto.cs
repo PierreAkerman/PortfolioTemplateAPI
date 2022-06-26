@@ -8,6 +8,9 @@ namespace PortfolioTemplateAPI.DTOs
         [Required]
         [MaxLength(20)]
         public string Title { get; set; }
+        public string Description { get; set; }
+
+        public decimal? Price { get; set; }
         [Required]
         public string ImgUrl { get; set; }
     }

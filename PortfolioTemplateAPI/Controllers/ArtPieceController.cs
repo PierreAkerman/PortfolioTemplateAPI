@@ -26,6 +26,8 @@ namespace PortfolioTemplateAPI.Controllers
             {
                 Id = e.Id,
                 Title = e.Title,
+                Description = e.Description,
+                Price = e.Price,
                 ImgUrl = e.ImgUrl,
 
         }).ToList());
@@ -80,27 +82,26 @@ namespace PortfolioTemplateAPI.Controllers
             return CreatedAtAction(nameof(GetOne), new { id = artPiece.Id }, artPieceDto);
         }
 
-        [HttpPut]
-        [Route("{id}")]
-        public IActionResult Update(int id, UpdateArtPieceDto revisedArtPiece)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
+        //[HttpPut]
+        //[Route("{id}")]
+        //public IActionResult Update(int id, UpdateArtPieceDto revisedArtPiece)
+        //{
+        //    if (!ModelState.IsValid)
+        //    {
+        //        return BadRequest(ModelState);
+        //    }
 
-            var artPiece = _context.Gallery.FirstOrDefault(e => e.Id == id);
-            if (artPiece == null) return NotFound();
+        //    var artPiece = _context.Gallery.FirstOrDefault(e => e.Id == id);
+        //    if (artPiece == null) return NotFound();
 
-            artPiece.Title = revisedArtPiece.Title;
-            artPiece.Description = revisedArtPiece.Description;
-            artPiece.Created = revisedArtPiece.Created;
-            artPiece.Price = revisedArtPiece.Price;
-            artPiece.ImgUrl = revisedArtPiece.ImgUrl;
+        //    artPiece.Title = revisedArtPiece.Title;
+        //    artPiece.Description = revisedArtPiece.Description;
+        //    artPiece.Price = revisedArtPiece.Price;
+        //    artPiece.ImgUrl = revisedArtPiece.ImgUrl;
 
-            _context.SaveChanges();
-            return NoContent();
-        }
+        //    _context.SaveChanges();
+        //    return NoContent();
+        //}
 
         [HttpDelete]
         [Route("{id}")]

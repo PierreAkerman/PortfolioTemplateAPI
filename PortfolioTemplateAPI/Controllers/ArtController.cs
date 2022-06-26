@@ -76,5 +76,30 @@ namespace PortfolioTemplateAPI.Controllers
             };
             return CreatedAtAction(nameof(GetOne), new { id = artPiece.Id }, artPieceDto);
         }
+
+        [HttpPost]
+        public IActionResult Update(int id, UpdateArtPieceDto revisedArtPiece)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            var artPiece = _context.Gallery.FirstOrDefault(e => e.Id == id);
+            if (artPiece == null) return NotFound();
+
+            var fileImage = Path.Combine(_webHostEnvironment.WebRootPath, "UploadedPics", artPiece.ImgUrl);
+            System.IO.File.Delete(fileImage);
+
+            var url = SaveNewFile(revisedArtPiece.ImgUrl);
+
+            artPiece.Title = revisedArtPiece.Title;
+            artPiece.Description = revisedArtPiece.Description;
+            artPiece.Price = revisedArtPiece.Price;
+            artPiece.ImgUrl = url;
+
+            _context.SaveChanges();
+            return NoContent();
+        }
     }
 }
